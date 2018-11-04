@@ -1,0 +1,5 @@
+# Starts the imwheel process.
+. /etc/X11/imwheel/startup.conf
+if [ "$IMWHEEL_START" = "1" ]; then
+	/usr/bin/imwheel -k "${IMWHEEL_PARAMS}"
+fi

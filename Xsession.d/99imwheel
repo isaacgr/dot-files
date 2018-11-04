@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Start imwheel on startup
+
+imwheel --kill --buttons "4 5" &
