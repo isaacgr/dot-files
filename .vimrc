@@ -22,7 +22,7 @@ endif
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
-set background=dark
+"set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -38,8 +38,8 @@ set background=dark
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
+"set showcmd		" Show (partial) command in status line.
+"set showmatch		" Show matching brackets.
 "set ignorecase		" Do case insensitive matching
 "set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
@@ -47,49 +47,64 @@ set showmatch		" Show matching brackets.
 "set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
 
-" General settings
-set autoindent
-set tabstop=4
-set noexpandtab
-set number
-set guifont=Ubuntu\ Mono\ 14
-
-" Set theme
-syntax enable
-let g:solarized_termtrans = 1
-let g:solarized_termcolors=16
-colorscheme solarized
-
-" Disable arrows
-no <down> <Nop>
-no <up> <Nop>
-no <left> <Nop>
-no <right> <Nop>
-
-ino <down> <Nop>
-ino <up> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-
-" Initialize Vundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter'
-call vundle#end()            " required
-filetype plugin indent on    " required
-let g:airline_solarized_bg='dark'
-
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+set number
+set autoread
+set so=999
+set ruler
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set showmatch
+set mat=2
+syntax enable
+colorscheme desert
+set encoding=utf8
+set ffs=unix,dos,mac
+set expandtab
+set smarttab
+set shiftwidth=4
+set tabstop=4
+set ai
+set si
+set wrap
+set laststatus=2
+
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+set splitright
+set splitbelow
+
+" copy to buffer
+vmap <C-c> :w! ~/.vimbuffer<CR>
+nmap <C-c> :.w! ~/.vimbuffer<CR>
+" paste from buffer
+map <C-p> :r ~/.vimbuffer<CR>
+
+
+set colorcolumn=80
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+let g:SimpylFold_docstring_preview=1
+
+match Cursor /\s\+$/
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let python_highlight_all=1
+syntax on
