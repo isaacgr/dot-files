@@ -89,6 +89,8 @@ nmap <C-c> :.w! ~/.vimbuffer<CR>
 " paste from buffer
 map <C-p> :r ~/.vimbuffer<CR>
 
+" formatting
+map <C-j> :%python -m json.tool
 
 set colorcolumn=80
 
@@ -108,3 +110,7 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 let python_highlight_all=1
 syntax on
+
+execute pathogen#infect()
+
+map <C-n> :NERDTreeToggle<CR>
